@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Land Use Classification - Bui Hai An</title>
+    <!-- Tailwind CSS v4 CDN -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome Icons (Đã bổ sung để hiện icon) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   </head>
   <body class="bg-white text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 antialiased">
     <div class="max-w-4xl mx-auto px-6 py-12">
@@ -24,27 +27,27 @@
 
       <!-- Nội dung bài viết -->
       <article class="prose dark:prose-invert max-w-none space-y-6 leading-relaxed">
-        <p class="text-lg leading-relaxed">
-          •	Semi-supervised learning improves the discrimination of spectrally similar LULC classes in complex agricultural landscapes.
-          • A realistic validation strategy reduces overfitting and provides more reliable land-cover estimates.
-        </p>
+        <ul class="list-disc pl-5 space-y-2 text-lg leading-relaxed">
+          <li>Semi-supervised learning improves the discrimination of spectrally similar LULC classes in complex agricultural landscapes.</li>
+          <li>A realistic validation strategy reduces overfitting and provides more reliable land-cover estimates.</li>
+        </ul>
 
-        <img src="Assets/land-use/figure1.png" alt="Classification Map" class="rounded-xl w-full object-cover shadow-md my-6" />
+        <img src="figure1.png" alt="Classification Map" class="rounded-xl w-full object-cover shadow-md my-6" />
 
         <h2 class="text-2xl font-semibold text-zinc-900 dark:text-white pt-4">1. Methodology Overview</h2>
-        <p>
-          •	We proposed a semi-supervised framework that integrates multi-temporal remote sensing indices for land cover classification in data-scarce environments.
-        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>We proposed a semi-supervised framework that integrates multi-temporal remote sensing indices for land cover classification in data-scarce environments.</li>
+        </ul>
 
         <h2 class="text-2xl font-semibold text-zinc-900 dark:text-white pt-4">2. Key Results & Publications</h2>
-        <p>
-          •	The proposed SoC4SS-FGVC model achieved 0.92 accuracy with only 500 labeled samples, outperforming supervised models (RF, SVM, CNN).
-        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>The proposed SoC4SS-FGVC model achieved 0.92 accuracy with only 500 labeled samples, outperforming supervised models (RF, SVM, CNN).</li>
+        </ul>
       </article>
 
       <section class="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
         <h2 class="text-xl font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
-          <i class="fa-solid fa-book-bookmark text-emerald-600">="text-emerald-400"></i>
+          <i class="fa-solid fa-book-bookmark text-emerald-600 dark:text-emerald-400"></i>
           Related Publications & References
         </h2>
 
@@ -63,16 +66,13 @@
             
             <!-- Links DOI & PDF -->
             <div class="mt-4 flex flex-wrap items-center gap-3">
-              
-              <a href=" https://doi.org/10.3390/rs18070989" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-white bg-emerald-700 hover:bg-emerald-600 px-3 py-1.5 rounded-lg transition">
+              <a href="https://doi.org/10.3390/rs18070989" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-white bg-emerald-700 hover:bg-emerald-600 px-3 py-1.5 rounded-lg transition">
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> View Article (DOI)
               </a>
-              
             </div>
           </div>
         </div>
       </section>
-      <!-- ======================================================== -->
 
       <!-- Footer trang bài viết -->
       <div class="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800 text-center text-sm text-zinc-500">
