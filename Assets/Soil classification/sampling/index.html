@@ -29,11 +29,19 @@
           This video record the field work for sampling soil monolith.
         </p>
 
-        <!-- Hình ảnh minh họa hoặc video nhúng -->
+        <!-- Khung video đã được giới hạn kích thước gọn gàng, không bị tràn màn hình -->
         <div class="my-6">
-          <video controls class="w-full rounded-xl shadow-md">
-          <source src="https://onedrive.live.com/personal/577d0be1e90cdcba/_layouts/15/download.aspx?UniqueId=7a81ef44%2D421f%2D43a2%2Dac3b%2D3744f597e2c7" type="video/mp4">
-          </video>v  
+          <video controls class="w-full max-h-[500px] object-contain rounded-xl shadow-md bg-black">
+            <source src="https://onedrive.live.com/personal/577d0be1e90cdcba/_layouts/15/download.aspx?UniqueId=7a81ef44%2D421f%2D43a2%2Dac3b%2D3744f597e2c7" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ thẻ video.
+          </video>
+          
+          <!-- Nút phụ hỗ trợ mở/tải video nếu OneDrive bị giới hạn stream -->
+          <div class="mt-4 text-center">
+            <a href="https://onedrive.live.com/personal/577d0be1e90cdcba/_layouts/15/download.aspx?UniqueId=7a81ef44%2D421f%2D43a2%2Dac3b%2D3744f597e2c7" target="_blank" class="inline-flex items-center gap-2 text-xs font-medium text-white bg-emerald-700 hover:bg-emerald-600 px-4 py-2 rounded-lg transition">
+              <i class="fa-solid fa-cloud-arrow-down"></i> Open / Download Video directly from OneDrive
+            </a>
+          </div>
         </div>
       </article>
 
