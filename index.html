@@ -236,7 +236,7 @@
           
           <!-- END Projects -->
 
-          <!-- Contact -->
+<!-- Contact -->
           <div
             id="contact"
             class="relative col-span-1 flex flex-col overflow-hidden rounded-xl bg-zinc-100 px-12 py-20 md:col-span-12 dark:bg-zinc-900"
@@ -258,15 +258,24 @@
                 Get in touch
               </h2>
               <h3 class="mt-3 leading-relaxed text-zinc-900 dark:text-zinc-200">
-                Looking forward to hearing from you! Email: bhan2@mae.gov.vn
+                Looking forward to hearing from you! Email: 
+                <a href="mailto:bhan2@mae.gov.vn" class="font-medium text-emerald-700 hover:underline dark:text-emerald-400">bhan2@mae.gov.vn</a>
               </h3>
-              <form onsubmit="return false;" class="mt-10 w-full space-y-6">
+
+              <!-- Form gửi thư trực tiếp qua FormSubmit AJAX -->
+              <form id="contactForm" class="mt-10 w-full space-y-6">
+                <!-- Cấu hình tiêu đề email gửi về và tắt captcha mặc định -->
+                <input type="hidden" name="_subject" value="New message from Personal Research Website!" />
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div class="space-y-2">
                   <label for="name" class="inline-block text-sm font-medium">Name</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
+                    required
+                    placeholder="Your name"
                     class="block w-full rounded-lg bg-white border border-zinc-300 px-5 py-3 leading-6 placeholder-zinc-500 focus:border-emerald-500 focus:ring-3 focus:ring-emerald-500/50 dark:border-emerald-900 dark:bg-emerald-950 dark:text-white"
                   />
                 </div>
@@ -276,6 +285,8 @@
                     type="email"
                     id="email"
                     name="email"
+                    required
+                    placeholder="your.email@example.com"
                     class="block w-full rounded-lg bg-white border border-zinc-300 px-5 py-3 leading-6 placeholder-zinc-500 focus:border-emerald-500 focus:ring-3 focus:ring-emerald-500/50 dark:border-emerald-900 dark:bg-emerald-950 dark:text-white"
                   />
                 </div>
@@ -285,18 +296,66 @@
                     id="message"
                     name="message"
                     rows="4"
+                    required
+                    placeholder="Write your message here..."
                     class="block w-full rounded-lg bg-white border border-zinc-300 px-5 py-3 leading-6 placeholder-zinc-500 focus:border-emerald-500 focus:ring-3 focus:ring-emerald-500/50 dark:border-emerald-900 dark:bg-emerald-950 dark:text-white"
                   ></textarea>
                 </div>
+
+                <!-- Khu vực hiển thị thông báo trạng thái gửi -->
+                <div id="formStatus" class="hidden rounded-lg p-3 text-sm font-medium"></div>
+
                 <button
                   type="submit"
-                  class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-emerald-700 bg-emerald-700 px-5 py-3 text-sm leading-6 font-semibold text-white hover:bg-emerald-600 focus:ring-3 focus:ring-emerald-400/50"
+                  id="submitBtn"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-emerald-700 bg-emerald-700 px-5 py-3 text-sm leading-6 font-semibold text-white hover:bg-emerald-600 focus:ring-3 focus:ring-emerald-400/50 disabled:opacity-50 cursor-pointer"
                 >
                   <span>Send Message</span>
                 </button>
               </form>
             </div>
           </div>
+
+          <!-- Script xử lý gửi form ngầm và báo thành công ngay trên trang -->
+          <script>
+            document.getElementById("contactForm").addEventListener("submit", function (e) {
+              e.preventDefault();
+              
+              const form = e.target;
+              const btn = document.getElementById("submitBtn");
+              const status = document.getElementById("formStatus");
+              const originalBtnText = btn.innerHTML;
+
+              // Đổi trạng thái nút khi đang gửi
+              btn.disabled = true;
+              btn.innerHTML = "<span>Sending...</span>";
+              status.classList.add("hidden");
+
+              fetch("https://formsubmit.co/ajax/bhan2@mae.gov.vn", {
+                method: "POST",
+                body: new FormData(form),
+                headers: {
+                  'Accept': 'application/json'
+                }
+              })
+              .then(response => response.json())
+              .then(data => {
+                status.classList.remove("hidden", "bg-red-100", "text-red-700");
+                status.classList.add("bg-emerald-100", "text-emerald-800", "dark:bg-emerald-900/60", "dark:text-emerald-200");
+                status.textContent = "Thank you! Your message has been sent successfully.";
+                form.reset();
+              })
+              .catch(error => {
+                status.classList.remove("hidden", "bg-emerald-100", "text-emerald-800");
+                status.classList.add("bg-red-100", "text-red-700");
+                status.textContent = "Oops! Something went wrong. Please email directly to bhan2@mae.gov.vn.";
+              })
+              .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalBtnText;
+              });
+            });
+          </script>
           <!-- END Contact -->
 
           <!-- Footer -->
@@ -313,6 +372,12 @@
               <span x-text="new Date().getFullYear()"></span>
             </div>
           </footer>
+
+          <!-- Bộ đếm số người truy cập -->
+          <div class="flex items-center justify-center gap-2 text-xs text-zinc-500 mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+            <i class="fa-solid fa-users text-emerald-600"></i>
+            <span>Total Visitors:</span>
+            <img src="https://api.visitorbadge.io/api/combined?path=buihaian1403.github.io&countColor=%23059669&style=flat" alt="Visitor Count" class="inline-block h-5">
           <!-- END Footer -->
         </div>
         <!-- END Main Content -->
